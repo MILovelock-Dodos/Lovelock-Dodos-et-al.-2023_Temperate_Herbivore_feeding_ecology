@@ -1,0 +1,390 @@
+SIMPER
+Similarity Percentages - species contributions
+
+Two-Way Analysis
+
+Data worksheet
+Name: Data3
+Data type: Abundance
+Sample selection: All
+Variable selection: All
+
+Parameters
+Resemblance: S17 Bray Curtis similarity
+Cut off for low contributions: 90.00%
+
+Factor Groups
+Sample	species	temp
+s10101aa	aa	18.5
+s10102aa	aa	18.5
+s10103aa	aa	18.5
+s10104aa	aa	18.5
+s10105aa	aa	18.5
+s10106aa	aa	18.5
+s10107aa	aa	18.5
+s10108aa	aa	18.5
+s10109aa	aa	18.5
+s10110aa	aa	18.5
+s20101aa	aa	17
+s20102aa	aa	17
+s20103aa	aa	17
+s20104aa	aa	17
+s20105aa	aa	17
+s20106aa	aa	17
+s20107aa	aa	17
+s20108aa	aa	17
+s20109aa	aa	17
+s20110aa	aa	17
+s20201aa	aa	17
+s20202aa	aa	17
+s20203aa	aa	17
+s20204aa	aa	17
+s20205aa	aa	17
+s20206aa	aa	17
+s20207aa	aa	17
+s20208aa	aa	17
+s20209aa	aa	17
+s20210aa	aa	17
+s20211aa	aa	17
+s20212aa	aa	17
+s20301aa	aa	14.1
+s20302aa	aa	14.1
+s20303aa	aa	14.1
+s20304aa	aa	14.1
+s20305aa	aa	14.1
+s20306aa	aa	14.1
+s20307aa	aa	14.1
+s20308aa	aa	14.1
+s20309aa	aa	14.1
+s20310aa	aa	14.1
+s20311aa	aa	14.1
+s20401aa	aa	12
+s20402aa	aa	12
+s20403aa	aa	12
+s20404aa	aa	12
+s20405aa	aa	12
+s30101aa	aa	18
+s30102aa	aa	18
+s30103aa	aa	18
+s30104aa	aa	18
+s30105aa	aa	18
+s30201aa	aa	15
+s30202aa	aa	15
+s20201hc	oc	17
+s20202hc	oc	17
+s20203hc	oc	17
+s20204hc	oc	17
+s20205hc	oc	17
+s20206hc	oc	17
+s20301hc	oc	14.1
+s20302hc	oc	14.1
+s20303hc	oc	14.1
+s20304hc	oc	14.1
+s30101hc	oc	18
+s30102hc	oc	18
+s30103hc	oc	18
+s30104hc	oc	18
+s30201hc	oc	15
+s30202hc	oc	15
+s30203hc	oc	15
+s30204hc	oc	15
+
+Examines species groups
+(across all temp groups)
+Group aa
+Average similarity: 50.19
+
+Species	Av.Abund	Av.Sim	Sim/SD	Contrib%	Cum.%
+Ceramiales	    5.66	 23.81	  1.28	   47.44	47.44
+Gigartinales	    3.48	  9.31	  0.87	   18.56	66.00
+Sponge	    2.50	  8.23	  1.08	   16.40	82.40
+Laminariales	    1.91	  4.05	  0.49	    8.07	90.47
+
+Group oc
+Average similarity: 76.23
+
+Species	Av.Abund	Av.Sim	Sim/SD	Contrib%	Cum.%
+Laminariales	    9.08	 64.81	  5.28	   85.01	85.01
+Ceramiales	    1.76	  8.61	  1.02	   11.29	96.30
+
+Groups aa  &  oc
+Average dissimilarity = 74.47
+
+	Group aa	Group oc	       	       	        	     
+Species	Av.Abund	Av.Abund	Av.Diss	Diss/SD	Contrib%	Cum.%
+Laminariales	    1.91	    9.08	  25.50	   2.76	   34.24	34.24
+Ceramiales	    5.66	    1.76	  13.44	   1.37	   18.05	52.29
+Sponge	    2.50	    0.05	   8.45	   1.17	   11.35	63.64
+Gigartinales	    3.48	    0.35	   8.18	   1.09	   10.99	74.62
+Fucales	    1.34	    0.00	   5.88	   0.76	    7.89	82.51
+Ulvales	    0.60	    0.56	   3.87	   0.64	    5.19	87.71
+Halymeniales	    0.42	    0.00	   2.06	   0.28	    2.77	90.47
+
+Examines temp groups
+(across all species groups)
+Group 18.5
+Average similarity: 71.92
+
+Species	Av.Abund	Av.Sim	Sim/SD	Contrib%	Cum.%
+Gigartinales	    6.01	 25.90	  2.53	   36.02	36.02
+Ceramiales	    4.72	 21.09	  4.16	   29.33	65.34
+Laminariales	    4.20	 15.82	  1.80	   22.00	87.34
+Sponge	    2.35	  8.40	  1.65	   11.69	99.03
+
+Group 17
+Average similarity: 44.59
+
+Species	Av.Abund	Av.Sim	Sim/SD	Contrib%	Cum.%
+Ceramiales	    4.95	 20.84	  1.09	   46.73	46.73
+Sponge	    2.23	  7.56	  0.95	   16.95	63.69
+Gigartinales	    2.25	  6.49	  0.81	   14.55	78.24
+Laminariales	    3.24	  5.56	  0.34	   12.47	90.71
+
+Group 14.1
+Average similarity: 63.87
+
+Species	Av.Abund	Av.Sim	Sim/SD	Contrib%	Cum.%
+Ceramiales	    6.16	 34.66	  1.91	   54.26	54.26
+Sponge	    2.44	 10.39	  1.36	   16.27	70.53
+Laminariales	    3.57	 10.21	  0.50	   15.98	86.51
+Fucales	    1.13	  3.57	  0.82	    5.59	92.10
+
+Group 12
+Average similarity: 53.03
+
+Species	Av.Abund	Av.Sim	Sim/SD	Contrib%	Cum.%
+Ceramiales	    6.82	 30.82	  2.01	   58.11	58.11
+Gigartinales	    4.11	 12.45	  1.27	   23.48	81.59
+Laminariales	    1.89	  7.71	  2.98	   14.55	96.14
+
+Group 18
+Average similarity: 64.94
+
+Species	Av.Abund	Av.Sim	Sim/SD	Contrib%	Cum.%
+Laminariales	    3.96	 21.17	  0.71	   32.60	32.60
+Gigartinales	    3.44	 14.79	  1.08	   22.78	55.38
+Ceramiales	    3.09	 10.44	  1.15	   16.08	71.46
+Ulvales	    2.06	  7.01	  1.13	   10.80	82.26
+Fine Brown aglae	    1.59	  5.09	  1.04	    7.84	90.10
+
+Group 15
+Average similarity: 72.97
+
+Species	Av.Abund	Av.Sim	Sim/SD	Contrib%	Cum.%
+Laminariales	    6.21	 63.65	  2.14	   87.23	87.23
+Sphacelariales	    1.95	  7.55	  0.56	   10.35	97.57
+
+Groups 18.5  &  17
+Average dissimilarity = 52.64
+
+	Group 18.5	Group 17	       	       	        	     
+Species	  Av.Abund	Av.Abund	Av.Diss	Diss/SD	Contrib%	Cum.%
+Gigartinales	      6.01	    2.25	  11.57	   1.49	   21.99	21.99
+Laminariales	      4.20	    3.24	  10.77	   1.72	   20.46	42.45
+Ceramiales	      4.72	    4.95	   9.18	   1.54	   17.44	59.89
+Fucales	      0.13	    1.70	   5.85	   0.80	   11.11	71.00
+Sponge	      2.35	    2.23	   5.76	   1.10	   10.93	81.94
+Sphacelariales	      1.02	    0.20	   3.02	   0.60	    5.74	87.67
+Halymeniales	      0.00	    0.45	   1.57	   0.31	    2.98	90.65
+
+Groups 18.5  &  14.1
+Average dissimilarity = 50.64
+
+	Group 18.5	Group 14.1	       	       	        	     
+Species	  Av.Abund	  Av.Abund	Av.Diss	Diss/SD	Contrib%	Cum.%
+Gigartinales	      6.01	      1.40	  13.18	   1.83	   26.02	26.02
+Ceramiales	      4.72	      6.16	   9.31	   1.61	   18.39	44.40
+Laminariales	      4.20	      3.57	   8.35	   1.73	   16.50	60.90
+Sponge	      2.35	      2.44	   5.18	   1.28	   10.24	71.14
+Fucales	      0.13	      1.13	   3.90	   1.21	    7.71	78.84
+Corallinales	      0.00	      0.87	   3.02	   0.94	    5.97	84.82
+Sphacelariales	      1.02	      0.07	   2.70	   0.58	    5.33	90.14
+
+Groups 17  &  14.1
+Average dissimilarity = 47.06
+
+	Group 17	Group 14.1	       	       	        	     
+Species	Av.Abund	  Av.Abund	Av.Diss	Diss/SD	Contrib%	Cum.%
+Ceramiales	    4.95	      6.16	  10.57	   1.18	   22.45	22.45
+Gigartinales	    2.25	      1.40	   6.80	   1.08	   14.45	36.90
+Sponge	    2.23	      2.44	   6.69	   1.08	   14.22	51.12
+Laminariales	    3.24	      3.57	   6.28	   0.80	   13.33	64.46
+Fucales	    1.70	      1.13	   5.92	   0.94	   12.58	77.04
+Corallinales	    0.12	      0.87	   2.98	   0.88	    6.32	83.36
+Ulvales	    0.31	      0.44	   1.57	   0.52	    3.34	86.70
+Halymeniales	    0.45	      0.00	   1.49	   0.30	    3.17	89.87
+Gelidiales	    0.00	      0.44	   1.49	   0.30	    3.17	93.04
+
+Groups 18.5  &  12
+Average dissimilarity = 44.62
+
+	Group 18.5	Group 12	       	       	        	     
+Species	  Av.Abund	Av.Abund	Av.Diss	Diss/SD	Contrib%	Cum.%
+Gigartinales	      6.01	    4.11	   8.81	   1.23	   19.75	19.75
+Ceramiales	      4.72	    6.82	   8.01	   1.20	   17.94	37.69
+Laminariales	      4.20	    1.89	   7.39	   1.70	   16.57	54.25
+Sponge	      2.35	    0.85	   6.21	   1.92	   13.91	68.17
+perc_Bryopsidales	      0.00	    2.11	   5.53	   0.69	   12.39	80.55
+Sphacelariales	      1.02	    0.00	   2.62	   0.54	    5.87	86.42
+Balliales	      0.29	    0.45	   1.65	   0.65	    3.69	90.11
+
+Groups 17  &  12
+Average dissimilarity = 55.98
+
+	Group 17	Group 12	       	       	        	     
+Species	Av.Abund	Av.Abund	Av.Diss	Diss/SD	Contrib%	Cum.%
+Ceramiales	    4.95	    6.82	  11.08	   1.21	   19.79	19.79
+Gigartinales	    2.25	    4.11	   9.40	   1.37	   16.80	36.58
+Sponge	    2.23	    0.85	   7.85	   1.13	   14.02	50.60
+Laminariales	    3.24	    1.89	   7.16	   0.98	   12.79	63.40
+Fucales	    1.70	    0.20	   6.21	   0.81	   11.10	74.49
+perc_Bryopsidales	    0.14	    2.11	   6.08	   0.73	   10.87	85.36
+Ulvales	    0.31	    0.49	   1.75	   0.78	    3.13	88.49
+Halymeniales	    0.45	    0.00	   1.67	   0.31	    2.98	91.47
+
+Groups 14.1  &  12
+Average dissimilarity = 48.60
+
+	Group 14.1	Group 12	       	       	        	     
+Species	  Av.Abund	Av.Abund	Av.Diss	Diss/SD	Contrib%	Cum.%
+Gigartinales	      1.40	    4.11	   9.24	   1.40	   19.01	19.01
+Sponge	      2.44	    0.85	   8.60	   1.62	   17.70	36.72
+Ceramiales	      6.16	    6.82	   7.81	   1.35	   16.07	52.79
+perc_Bryopsidales	      0.00	    2.11	   5.76	   0.69	   11.86	64.65
+Fucales	      1.13	    0.20	   4.00	   1.21	    8.24	72.89
+Laminariales	      3.57	    1.89	   3.64	   1.44	    7.49	80.38
+Corallinales	      0.87	    0.00	   3.20	   0.93	    6.59	86.97
+Ulvales	      0.44	    0.49	   1.89	   0.92	    3.88	90.85
+
+Groups 18.5  &  18
+Average dissimilarity = 47.59
+
+	Group 18.5	Group 18	       	       	        	     
+Species	  Av.Abund	Av.Abund	Av.Diss	Diss/SD	Contrib%	Cum.%
+Laminariales	      4.20	    3.96	   9.41	   2.17	   19.77	19.77
+Ulvales	      0.14	    2.06	   7.79	   2.48	   16.37	36.14
+Fine Brown aglae	      0.00	    1.59	   6.90	   1.77	   14.50	50.64
+Gigartinales	      6.01	    3.44	   4.57	   1.27	    9.61	60.25
+Sponge	      2.35	    0.76	   3.72	   1.34	    7.81	68.06
+Ceramiales	      4.72	    3.09	   3.67	   1.27	    7.72	75.78
+Balliales	      0.29	    0.83	   3.42	   1.41	    7.18	82.97
+Sphacelariales	      1.02	    1.47	   2.68	   0.67	    5.63	88.60
+perc_Bryopsidales	      0.00	    0.61	   2.56	   0.81	    5.38	93.98
+
+Groups 17  &  18
+Average dissimilarity = 57.33
+
+	Group 17	Group 18	       	       	        	     
+Species	Av.Abund	Av.Abund	Av.Diss	Diss/SD	Contrib%	Cum.%
+Gigartinales	    2.25	    3.44	   9.08	   1.22	   15.84	15.84
+Ceramiales	    4.95	    3.09	   8.72	   1.45	   15.22	31.06
+Ulvales	    0.31	    2.06	   7.62	   1.67	   13.29	44.35
+Fine Brown aglae	    0.00	    1.59	   6.07	   1.28	   10.59	54.94
+Sponge	    2.23	    0.76	   4.77	   0.90	    8.32	63.26
+Laminariales	    3.24	    3.96	   4.53	   0.61	    7.90	71.16
+Fucales	    1.70	    0.16	   4.46	   0.71	    7.77	78.93
+Balliales	    0.18	    0.83	   3.25	   1.15	    5.67	84.60
+Sphacelariales	    0.20	    1.47	   2.71	   0.48	    4.72	89.32
+perc_Bryopsidales	    0.14	    0.61	   2.33	   0.76	    4.06	93.38
+
+Groups 14.1  &  18
+Average dissimilarity = 54.54
+
+	Group 14.1	Group 18	       	       	        	     
+Species	  Av.Abund	Av.Abund	Av.Diss	Diss/SD	Contrib%	Cum.%
+Gigartinales	      1.40	    3.44	  10.58	   1.52	   19.39	19.39
+Ceramiales	      6.16	    3.09	   8.60	   1.45	   15.77	35.16
+Ulvales	      0.44	    2.06	   6.56	   1.58	   12.02	47.18
+Fine Brown aglae	      0.00	    1.59	   5.55	   1.18	   10.18	57.36
+Sponge	      2.44	    0.76	   4.53	   0.98	    8.31	65.68
+Laminariales	      3.57	    3.96	   3.40	   1.17	    6.23	71.91
+Balliales	      0.06	    0.83	   2.85	   1.03	    5.22	77.13
+Sphacelariales	      0.07	    1.47	   2.84	   0.47	    5.22	82.34
+Fucales	      1.13	    0.16	   2.71	   0.92	    4.97	87.32
+Corallinales	      0.87	    0.00	   2.18	   0.75	    4.00	91.32
+
+Groups 12  &  18
+Average dissimilarity = 51.87
+
+	Group 12	Group 18	       	       	        	     
+Species	Av.Abund	Av.Abund	Av.Diss	Diss/SD	Contrib%	Cum.%
+Ceramiales	    6.82	    3.09	   8.10	   1.20	   15.61	15.61
+Gigartinales	    4.11	    3.44	   8.09	   1.22	   15.59	31.20
+Fine Brown aglae	    0.00	    1.59	   7.28	   1.74	   14.03	45.23
+Ulvales	    0.49	    2.06	   7.20	   2.10	   13.87	59.11
+perc_Bryopsidales	    2.11	    0.61	   5.80	   0.91	   11.19	70.30
+Sponge	    0.85	    0.76	   4.15	   1.25	    8.00	78.30
+Laminariales	    1.89	    3.96	   4.00	   2.07	    7.71	86.00
+Balliales	    0.45	    0.83	   3.60	   1.36	    6.93	92.94
+
+Groups 18.5  &  15
+Average dissimilarity = 80.39
+
+	Group 18.5	Group 15	       	       	        	     
+Species	  Av.Abund	Av.Abund	Av.Diss	Diss/SD	Contrib%	Cum.%
+Halymeniales	      0.00	    1.74	  16.96	   1.06	   21.10	21.10
+Gigartinales	      6.01	    0.33	  15.19	   1.90	   18.90	40.00
+Laminariales	      4.20	    6.21	  12.00	   2.19	   14.93	54.93
+Ceramiales	      4.72	    0.47	  10.17	   1.58	   12.65	67.57
+Sponge	      2.35	    0.82	   7.06	   2.04	    8.79	76.36
+Fucales	      0.13	    0.91	   6.97	   1.01	    8.68	85.04
+Ulvales	      0.14	    0.88	   6.87	   2.25	    8.54	93.58
+
+Groups 17  &  15
+Average dissimilarity = 60.17
+
+	Group 17	Group 15	       	       	        	     
+Species	Av.Abund	Av.Abund	Av.Diss	Diss/SD	Contrib%	Cum.%
+Ceramiales	    4.95	    0.47	  13.91	   1.28	   23.13	23.13
+Halymeniales	    0.45	    1.74	  11.79	   0.72	   19.60	42.73
+Ulvales	    0.31	    0.88	   6.13	   1.09	   10.19	52.92
+Fucales	    1.70	    0.91	   5.94	   0.77	    9.88	62.80
+Sponge	    2.23	    0.82	   5.82	   0.83	    9.67	72.47
+Gigartinales	    2.25	    0.33	   5.14	   0.78	    8.54	81.01
+Laminariales	    3.24	    6.21	   4.71	   0.53	    7.83	88.84
+Sphacelariales	    0.20	    1.95	   4.55	   0.67	    7.56	96.41
+
+Groups 14.1  &  15
+Average dissimilarity = 55.81
+
+	Group 14.1	Group 15	       	       	        	     
+Species	  Av.Abund	Av.Abund	Av.Diss	Diss/SD	Contrib%	Cum.%
+Ceramiales	      6.16	    0.47	  15.06	   1.37	   26.99	26.99
+Halymeniales	      0.00	    1.74	  10.37	   0.66	   18.59	45.58
+Ulvales	      0.44	    0.88	   5.02	   1.13	    8.99	54.57
+Sphacelariales	      0.07	    1.95	   4.95	   0.68	    8.87	63.44
+Sponge	      2.44	    0.82	   4.91	   0.81	    8.79	72.23
+Fucales	      1.13	    0.91	   4.52	   0.83	    8.09	80.33
+Gigartinales	      1.40	    0.33	   4.20	   0.95	    7.52	87.85
+Laminariales	      3.57	    6.21	   3.54	   1.13	    6.34	94.19
+
+Groups 12  &  15
+Average dissimilarity = 82.30
+
+	Group 12	Group 15	       	       	        	     
+Species	Av.Abund	Av.Abund	Av.Diss	Diss/SD	Contrib%	Cum.%
+Halymeniales	    0.00	    1.74	  18.28	   1.02	   22.21	22.21
+Ceramiales	    6.82	    0.47	  18.17	   1.41	   22.08	44.29
+Gigartinales	    4.11	    0.33	  10.25	   1.34	   12.46	56.75
+Fucales	    0.20	    0.91	   7.43	   1.03	    9.03	65.78
+Sponge	    0.85	    0.82	   6.85	   0.99	    8.33	74.11
+Ulvales	    0.49	    0.88	   6.27	   1.96	    7.62	81.73
+perc_Bryopsidales	    2.11	    0.00	   6.16	   0.66	    7.48	89.21
+Laminariales	    1.89	    6.21	   5.66	   2.60	    6.88	96.09
+
+Groups 18  &  15
+Average dissimilarity = 43.63
+
+	Group 18	Group 15	       	       	        	     
+Species	Av.Abund	Av.Abund	Av.Diss	Diss/SD	Contrib%	Cum.%
+Sphacelariales	    1.47	    1.95	   7.34	   0.85	   16.82	16.82
+Ceramiales	    3.09	    0.47	   6.60	   1.07	   15.12	31.94
+Halymeniales	    0.00	    1.74	   5.96	   0.50	   13.66	45.60
+Gigartinales	    3.44	    0.33	   5.55	   0.67	   12.71	58.31
+Laminariales	    3.96	    6.21	   3.01	   0.88	    6.90	65.21
+Fine Brown aglae	    1.59	    0.00	   2.93	   0.63	    6.71	71.92
+Fucales	    0.16	    0.91	   2.52	   0.51	    5.78	77.70
+Ulvales	    2.06	    0.88	   2.47	   0.81	    5.67	83.37
+Sponge	    0.76	    0.82	   2.38	   0.61	    5.46	88.83
+Balliales	    0.83	    0.00	   1.55	   0.58	    3.55	92.38
+
