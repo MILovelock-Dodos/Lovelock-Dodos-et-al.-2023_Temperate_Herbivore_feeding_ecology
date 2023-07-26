@@ -1,0 +1,388 @@
+---
+title: "Temperate Herbivorous Fish Feeding Ecology"
+author: "Maya Lovelock-Dodos"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+setwd("~/Desktop/Data_tidy_manuscript")
+```
+
+#Libraries
+```{r, results='hide'}
+library(tidyverse)
+library(janitor)
+library(mgcv)
+library(cowplot)
+library(scales)
+library(geomtextpath)
+library(ggtext)
+library(ggplot2)
+library(gridExtra)
+library(ggthemes)
+library(lme4)
+```
+```{r, publication theme, include=FALSE}
+theme_Publication <- function(base_size=10, base_family="sans") {
+  library(grid)
+  library(ggthemes)
+  (theme_foundation(base_size=base_size, base_family=base_family)
+    + theme(plot.title = element_text(face = "bold",
+                                      size = rel(1.2), hjust = 0.5, margin = margin(0,0,20,0)),
+            text = element_text(),
+            panel.background = element_rect(colour = NA),
+            plot.background = element_rect(colour = NA),
+            panel.border = element_rect(colour = NA),
+            axis.title = element_text(face = "bold",size = rel(1.2)),
+            axis.title.y = element_text(angle=90,vjust =2),
+            axis.title.x = element_text(vjust = -0.2),
+            axis.text = element_text(), 
+            axis.line.x = element_line(colour="black"),
+            axis.line.y = element_line(colour="black"),
+            axis.ticks = element_line(),
+            panel.grid.major = element_line(colour="#f0f0f0"),
+            panel.grid.minor = element_blank(),
+            legend.key = element_rect(colour = NA),
+            legend.position = "bottom",
+            legend.direction = "horizontal",
+            legend.box = "vetical",
+            legend.key.size= unit(0.5, "cm"),
+            #legend.margin = unit(0, "cm"),
+            legend.title = element_text(face="bold"),
+            legend.text= element_text(face="italic", size = rel(1)),
+            plot.margin=unit(c(10,5,5,5),"mm"),
+            strip.background=element_rect(colour="#f0f0f0",fill="#f0f0f0"),
+            strip.text = element_text(face="bold")
+    ))
+  
+}
+
+scale_fill_Publication <- function(...){
+  library(scales)
+  discrete_scale("fill","Publication",manual_pal(values = c("#386cb0","#f87f01","#7fc97f","#ef3b2c","#feca01","#a6cee3","#fb9a99","#984ea3","#8C591D")), ...)
+  
+}
+
+scale_colour_Publication <- function(...){
+  library(scales)
+  discrete_scale("colour","Publication",manual_pal(values = c("#386cb0","#f87f01","#7fc97f","#ef3b2c","#feca01","#a6cee3","#fb9a99","#984ea3","#8C591D")), ...)
+  
+}
+```
+# Q1: Do fish eat less at colder temperatures?
+
+### Clean data
+```{r Gastro-somatic Index}
+maindat <- 
+  read_csv("fishdata2.csv") |> 
+  clean_names() |> 
+  mutate(site = as.factor(site), 
+         species = as.factor(species))
+clean_dat <- 
+  maindat |> 
+  select(site, species, temp, weight_tot, fl, gsi, fult_k) 
+```
+
+### Data Exploration
+Fork length and body weight with species and temperature groups pooled
+```{r plot1, echo=FALSE}
+clean_dat |> 
+  ggplot(aes(log(fl), 
+             log(weight_tot))) +
+  geom_point()
+```
+```{r}
+lw_mod <- lm(log(weight_tot)~log(fl)*species, data = clean_dat)
+clean_dat_withcond <- 
+clean_dat |> 
+  mutate(est_w = exp(predict(lw_mod))) |> 
+  mutate(resid_weight = weight_tot-est_w) 
+
+```
+
+seperate species fork length and weight
+```{r plot2, echo=FALSE}
+clean_dat_withcond|> 
+  ggplot(aes(log(fl), 
+             log(weight_tot), 
+             col = species)) +
+  geom_point() +
+  geom_line(aes(y = log(est_w)))
+```
+```{r plot3, echo=FALSE}
+clean_dat |> 
+  ggplot(aes(x = I(0.01*fl^3), 
+             y = weight_tot, 
+             col = species)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+Temperature and gastosomatic index (or fullness) 
+```{r plot4, echo=FALSE}
+clean_dat |> 
+  ggplot(aes(x = temp,
+             y = gsi, 
+             col = species)) +
+  geom_point() +
+  stat_smooth()
+```
+temperature and weight (g)
+```{r plot5, echo=FALSE}
+clean_dat |> 
+  ggplot(aes(x = temp,
+             y = weight_tot, 
+             col = species)) +
+  geom_point() +
+  stat_smooth()
+```
+
+weight(g) and gsi by species
+```{r}
+clean_dat |> 
+  ggplot(aes(x = weight_tot,
+             y = gsi, 
+             col = species)) +
+  geom_point() +
+  stat_smooth()
+```
+
+weight and gsi by temperature
+```{r}
+clean_dat |> 
+  ggplot(aes(x = weight_tot,
+             y = gsi, 
+             col = temp)) +
+  geom_point() +
+  stat_smooth()
+```
+
+
+```{r}
+
+lm1 <- lm(gsi ~ temp + species, data = clean_dat)
+lm2 <- lm(gsi ~ temp + species*weight_tot, data = clean_dat) 
+```
+seems it's the weight driving the gsi, not the species ID, and _A. arctidens_ has the higher weight therefore higher gsi
+
+```{r}
+get_pvals <- function(mod){
+  coefs <- data.frame(coef(summary(mod)))
+  # use normal distribution to approximate p-value
+  coefs$p.z <- 2 * (1 - pnorm(abs(coefs$t.value)))
+  coefs
+}
+
+lmer(gsi ~ temp + species*weight_tot + (1|site), data = clean_dat) |> get_pvals()
+
+jk<-lm(weight_tot~species, data = clean_dat)
+summary(jk)
+```
+
+### GAMs
+```{r GAMs}
+mod1 <- gam(gsi~temp, data = clean_dat) 
+
+mod2 <- gam(gsi~temp + site, data = clean_dat) 
+
+mod3 <- gam(gsi~temp + weight_tot + site, data = clean_dat) 
+
+mod4 <- gam(gsi~temp + species + weight_tot + site, data = clean_dat)
+
+mod5 <- gam(gsi~temp + species*weight_tot + s(site, bs = 're'), data = clean_dat, method = 'REML')
+mod6 <- gam(gsi~ s(temp, bs = "cr", k = 3) + s(weight_tot, bs = "cr") + species + s(site, bs = 're'), data = clean_dat, method = 'REML')
+
+AIC(lm1, lm2, mod1, mod2, mod3, mod4, mod5, mod6) |> 
+  arrange(desc(AIC))
+#mod 6 wins
+summary(mod6)
+```
+
+final plot for GSI (or gut fullness) using mod6.
+```{r, echo=FALSE}
+p1 <- clean_dat |> 
+  mutate(fit12 = predict(mod6, newdata = data.frame(species = species, weight_tot = weight_tot, site=site, temp = 12))) |> 
+  mutate(fit15 = predict(mod6, newdata = data.frame(species = species, weight_tot = weight_tot, site=site, temp = 15))) |> 
+  mutate(fit17 = predict(mod6, newdata = data.frame(species = species, weight_tot = weight_tot, site=site, temp = 17))) |> 
+  mutate(fit19 = predict(mod6, newdata = data.frame(species = species, weight_tot = weight_tot, site=site, temp = 19))) |> 
+  ggplot(aes(x = weight_tot,
+             y = gsi, 
+             col = species)) +
+  geom_point() +
+  geom_textline(aes(y = fit12), label = "12°C", col = "#000033")+
+  geom_textline(aes(y = fit15), label = "15°C", col = "#003399")+
+  geom_textline(aes(y = fit17), label = "17°C", col = "#3399CC") +
+  geom_textline(aes(y = fit19), label = "19°C", col = "#66CCFF") +
+  theme(legend.title = element_text(size = 13)) +
+  theme(legend.text = element_text(size = 10, face = "italic")) +
+  labs(x = "Total weight (g)", 
+       y = "GSI") +
+  ggtitle("Trend of gastrosomatic index (GSI) with weight and temperature (°C)")+ 
+  theme(plot.title = element_text(size = 5))
+
+p1 + scale_colour_Publication()+ theme_Publication()
+```
+# Q2 What are they eating? Gut content analysis (GCA)
+### note: Multivariate analysis done using PRIMER
+
+```{r}
+GCAdat <- 
+  read_csv("fdata.all.csv") |> 
+  clean_names() |> 
+  mutate(site = as.factor(site), 
+         species = as.factor(species),
+         lipids = as.factor(lipids),
+         fult_k = as.numeric(fult_k),
+         month = as.factor(month))
+summary(GCAdat)
+```
+```{r}
+gca <- 
+  GCAdat |> 
+  select(id,month,temp, species,fl, weight_tot,lipids, fult_k, phylum,spp,perc_composition) 
+
+
+summary(gca)
+a2 <- gca[c(1:330, 419:902, 1123:1408, 1497:1606),]
+summary(a2)
+c2 <- gca[c(331:418, 903:1122, 1409:1496, 1607:1650),]
+summary(c2)
+```
+
+Final plot used to visualise diet composition of species at different temperatures
+
+```{r, echo=FALSE}
+GCAplot<- gca %>% 
+  filter(phylum != 'Arthropoda') %>%
+  filter(phylum != 'Cnidaria') %>%
+  filter(phylum != 'Bryozoa') %>%
+  ggplot(aes(fill=phylum, y=perc_composition, x=temp)) + 
+  geom_bar(position="fill", stat="identity")+
+  scale_fill_manual(values = c("Chlorophyta" = "darkolivegreen3",
+                                "Ochrophyta" = "lightgoldenrod4",
+                                "Porifera" = "darkorange",
+                                "Rhodophyta" = "palevioletred"
+                                )) +
+  theme(plot.title=element_text(size=15)) +
+  facet_grid(vars(species)) +
+  labs(x= "Temperature (°C)",
+       y = "Composition") +
+  ggtitle ("Composition of macroalgae")
+GCAplot + scale_colour_Publication()+ theme_Publication()
+```
+# Q3 Is the condition of the sampled fish changing with temperature/seasons
+
+### 3.1: investigating the residuals of length and weight to get an indication of condition
+```{r, echo=FALSE}
+clean_dat_withcond |> 
+  ggplot(aes(x = temp, 
+             y = resid_weight,
+             col = species)) +
+  geom_point() +
+  stat_smooth()
+```
+
+```{r, echo=FALSE}
+clean_dat_withcond |> 
+  ggplot(aes(x = weight_tot, 
+             y = resid_weight, 
+             col = species)) +
+  geom_point() +
+  stat_smooth()
+```
+
+```{r}
+lm(resid_weight ~ temp , data = clean_dat_withcond)
+
+
+lm(resid_weight ~ temp + species*weight_tot, data = clean_dat_withcond) |> summary()
+mod7 <- gam(resid_weight ~ s(temp, bs = "cr", k = 5) + s(weight_tot, bs = "cr") + 
+              s(site, bs = 're'), data = clean_dat_withcond, method = 'REML')
+
+mod8 <- gam(resid_weight ~ s(temp, bs = "cr", k = 5) + s(weight_tot, bs="re"),
+              data = clean_dat_withcond, method = 'REML') 
+```
+
+```{r}
+mod7
+clean_dat_withcond |> 
+  mutate(fit12 = predict(mod7, newdata = data.frame(species = species, weight_tot = weight_tot, site=site, temp = 12))) |> 
+  mutate(fit15 = predict(mod7, newdata = data.frame(species = species, weight_tot = weight_tot, site=site, temp = 15))) |> 
+  mutate(fit17 = predict(mod7, newdata = data.frame(species = species, weight_tot = weight_tot, site=site, temp = 17))) |> 
+  mutate(fit19 = predict(mod7, newdata = data.frame(species = species, weight_tot = weight_tot, site=site, temp = 19))) |> 
+  ggplot(aes(x = weight_tot,
+             y = resid_weight, 
+             col = species)) +
+  geom_point() +
+  geom_line(aes(y = fit12), col = "black")+
+  geom_line(aes(y = fit15), col = "blue")+
+  geom_line(aes(y = fit17), col = "red") +
+  geom_line(aes(y = fit19), col = "orange") +
+  theme_cowplot() +
+  labs(x = "Total weight", 
+       y = "Resid weight (g)")
+```
+
+### Fulton's K conditional factor as an indicator of body condition
+```{r, echo=FALSE}
+clean_dat_withcond |> 
+  ggplot(aes(x = temp, 
+             y = fult_k, 
+             col = species)) +
+  geom_point() +
+  stat_smooth() +
+  labs(x="Temperature °C",
+       y="Fulton's K")+
+  ggtitle("Fulton's K with Temperature")
+```
+
+```{r, echo=FALSE}
+clean_dat_withcond |> 
+  ggplot(aes(x = weight_tot, 
+             y = fult_k, 
+             col = species)) +
+  geom_point() +
+  stat_smooth()
+```
+
+### GLMs
+```{r}
+lm(fult_k ~ species, data = clean_dat_withcond) |> summary()
+
+lm(fult_k ~ species + temp, data = clean_dat_withcond) |> summary()
+
+lm(fult_k ~ species + temp*weight_tot, data = clean_dat_withcond) |> summary()
+
+lm(fult_k ~ species + temp*weight_tot + site, data = clean_dat_withcond) |> summary()
+
+lm8 <- lm(fult_k ~ species*weight_tot +temp + site, data = clean_dat_withcond)
+lm9 <- lm(fult_k ~ species + weight_tot + site, data = clean_dat_withcond)
+lm10 <- lm(fult_k ~ species + weight_tot + site + temp, data = clean_dat_withcond)
+
+summary(lm9)
+summary(lm10)
+
+lm(fult_k ~ species*site, data = clean_dat_withcond) |> summary()
+
+AIC(lm8, lm9, lm10) |> 
+  arrange(desc(AIC))
+```
+```{r, echo=FALSE}
+p <- clean_dat_withcond |> 
+  mutate(fit = predict(lm9)) |> 
+  ggplot(aes(x = weight_tot, 
+             y = fult_k, 
+             col = species, 
+             lty = site)) +
+  geom_point() +
+  geom_line(aes(y = fit)) +
+  labs(x = "Total weight (g)",
+       y = "Fulton's K") +
+  ggtitle("Changes in Fulton's K across site and species") +
+  theme(legend.title = element_text(size = 10)) +
+  theme(legend.text = element_text(size = 10))
+p + scale_colour_Publication()+ theme_Publication()
+```
+
